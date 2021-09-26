@@ -35,7 +35,7 @@ void Find(List * head, int numSize, int k) {
             tempCell = current;
             current = current->next;
         }
-        printf("%-4d", current->val);
+        printf("%d ", current->val);
         del = current;
         tempCell->next = current->next;
         current = tempCell;
@@ -54,9 +54,3 @@ int main() {
 
     return 0;
 }
-/*
-%-4d
-3   6   9   2   7   1   8   5   10  4
-example out
-3   6   9   2   7   1   8   5  10   4
-*/
