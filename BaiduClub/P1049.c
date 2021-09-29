@@ -7,7 +7,7 @@ int main() {
         printf("%lld", left);
         return 0;
     }
-    for (res = left | temp; (res | temp) < right; temp <<= 1)
+    for (res = left | temp; (res | temp) <= right; temp <<= 1)
         res = (res | temp);
     printf("%lld", res);
     return 0;
