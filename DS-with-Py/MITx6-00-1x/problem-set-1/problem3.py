@@ -13,6 +13,7 @@ For example, if s = 'abcbcd', then your program should print
 Longest substring in alphabetical order is: abc
 """
 s = input()
+""" My foo version: O(n**2)
 maxCount = 0
 for i in range(len(s)):
     count = 1
@@ -26,5 +27,15 @@ for i in range(len(s)):
     if count > maxCount:
         maxCount = count
         res = temp
-
+        print("Longest substring in alphabetical order is: " + res)
+"""
+# Much Smarter One: O(n)
+temp = res = s[0]
+for i in s[1:]:
+    if i >= temp[-1]:
+        temp += i
+        if len(temp) > len(res):
+            res = temp
+    else:
+        temp = i
 print("Longest substring in alphabetical order is: " + res)
