@@ -77,7 +77,13 @@ void Find(list * t) {
     int index;
     printf("\nPlease enter her rank:");
     scanf("%d", &index);
-    printf("%dst %s\n", index, t->country[index-1]);
+    if (index > t->length || index < 1) {
+        printf("Out of bound!");
+        return;
+    }
+    index--;
+    printf("%dst %s\n", index, t->country[index]);
+    printf("Gold: %d    Silver: %d  Bronze: %d  Total: %d\n", (t->rank)[index][0], (t->rank)[index][1], (t->rank)[index][2], (t->rank)[index][3]);
 }
 
 void PrintAll(list * t) {
@@ -106,6 +112,11 @@ void FindName(list * t) {
 
 void Delete(list * t) {
     int toBedel;
+    t->length--;
+    if (t->length <= 0) {
+        printf("All deleted!");
+        return;
+    }
     printf("Which country do you want to delete?");
     scanf("%d", &toBedel);
     for (int i = toBedel-1; i < t->length; i++) {
@@ -113,14 +124,17 @@ void Delete(list * t) {
             t->rank[i][j] = t->rank[i+1][j];
         }
         strcpy(t->country[i], t->country[i+1]);
-    }
-    t->length--;
+    }    
 }
 
 void Insert(list * t) {
     int i;
     char ch[MAXSIZE], temp[MAXSIZE];
     t->length++;
+    if (t->length > MAXSIZE) {
+        printf("Out of size!");
+        return;
+    }
     printf("What the name of your country?");
     scanf("%s", ch);
     strcpy(t->country[t->length], ch);
