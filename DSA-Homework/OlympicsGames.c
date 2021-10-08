@@ -4,7 +4,7 @@
 #define MAXSIZE 30
 
 typedef struct Rank {
-    int rank[MAXSIZE][4];
+    int ** rank;
     char country[MAXSIZE][MAXSIZE];
     int size;
     int length;
@@ -20,9 +20,7 @@ void Insert(list * t);
 void swap(int * m, int * n);
 
 int main() {
-    list * t = (list*)malloc(sizeof(int)*(MAXSIZE*4+2) + sizeof(char)*(MAXSIZE*MAXSIZE));
-    t->length = MAXSIZE - 5;
-    t->size = MAXSIZE;
+    list * t;
     Init(t);
     int choice;
     while (1) {
@@ -54,7 +52,11 @@ int main() {
 
 void Init(list * t) {
     int count;
+    t->length = MAXSIZE - 5;
     t->size = MAXSIZE;
+    t->rank = (int **)malloc(sizeof(int *)*MAXSIZE);
+    for (int i = 0; i < MAXSIZE; i++)
+        t->rank[i] = (int *)malloc(sizeof(int)*4);
     count = t->length = MAXSIZE - 5;
     FILE * fp;
     fp = fopen("winners.txt", "r");
