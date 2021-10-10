@@ -142,7 +142,7 @@ void Insert(list * t) {
     int i;
     char ch[MAXSIZE], temp[MAXSIZE];
     t->length++;
-    if (t->length > MAXSIZE) {
+    if (t->length >= MAXSIZE) {
         printf("Out of size!");
         return;
     }

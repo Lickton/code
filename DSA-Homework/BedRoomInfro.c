@@ -94,7 +94,8 @@ void PrintMenu(void) {
     printf("3.根据学号，删除相应同学所有基础信息\n");
     printf("4.插入一条记录（新增一名同学信息）\n");
     printf("5.按学号升序输出信息表\n");
-    printf("6.按寝室号升序输出信息表\n\n");
+    printf("6.按寝室号升序输出信息表\n");
+    printf("输入0退出\n\n");
 }
 
 void  FindID(sqlist * t) {
@@ -150,9 +151,6 @@ void DeleteID(sqlist * t) {
         t->favor[i] = t->favor[i+1];
         t->room[i] = t->room[i+1];
     }
-    //for (int i = 0; i < t->len; i++) {
-    //    printf("%s %s %s %s %d\n", t->name[i], t->id[i], t->birth[i], t->favor[i], t->room[i]);
-    //}
 }
 
 void Insert(sqlist * t) {
@@ -164,10 +162,6 @@ void Insert(sqlist * t) {
     printf("输入他的姓名、学号、生日、兴趣爱好、房间号:");
     scanf("%s%s%s%s%d", t->name[t->len], t->id[t->len], t->birth[t->len], t->favor[t->len], t->room+(t->len));
     t->len++;
-    //for (int i = 0; i < t->len; i++) {
-    //    printf("%s %s %s %s %d\n", t->name[i], t->id[i], t->birth[i], t->favor[i], t->room[i]);
-    //}
-    
 }
 
 
@@ -226,8 +220,6 @@ int EasyAtoi(char * s) {
 }
 
 int removeDuplicates(int* nums, int numsSize){
-    //  Double pointer O(n)
-    //  362/362 cases passed 20ms(63.71%) 7.3MB(94.66%)
     int i, j, ans = 1;
     if (numsSize == 0) 
         return 0;
@@ -237,6 +229,5 @@ int removeDuplicates(int* nums, int numsSize){
             ans++;
         }
     }
-
     return ans;
 }
