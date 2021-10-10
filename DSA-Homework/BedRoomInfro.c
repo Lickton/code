@@ -1,5 +1,5 @@
 /*
- * File name:   NedRoomInfro
+ * File name:   BedRoomInfro
  * Author:      Lickton @github
  * Date:        2021.10.10
  * */
@@ -102,7 +102,6 @@ void  FindID(sqlist * t) {
     char temp[MAXSIZE];
     printf("请输入学号:");
     scanf("%s", temp);
-    printf("%d", t->len);
     for (int i = 0; i < t->len; i++) {
         if (!strcmp(temp, t->id[i])) {
             printf("%s %s %s\n", t->name[i], t->birth[i], t->favor[i]);
@@ -130,7 +129,6 @@ void FindRoom(sqlist * t) {
 void DeleteID(sqlist * t) {
     char temp[MAXSIZE];
     int place = -1;
-    t->len--;
     if (t->len <= 0) {
         printf("没人咋还能删啊，肯定不能啊!");
         return;
@@ -138,8 +136,10 @@ void DeleteID(sqlist * t) {
     printf("想删除谁？报上他的学号:");
     scanf("%s", temp);
     for (int i = 0; i < t->len; i++)
-        if (!strcmp(temp, t->id[i]))
+        if (!strcmp(temp, t->id[i])) {
             place = i;
+            break;
+        }
     if (place == -1) {
         printf("没这号人");
         return;
@@ -151,11 +151,11 @@ void DeleteID(sqlist * t) {
         t->favor[i] = t->favor[i+1];
         t->room[i] = t->room[i+1];
     }
+    t->len--;
 }
 
 void Insert(sqlist * t) {
-    printf("%d", t->len);
-    if (t->len >= MAXSIZE) {
+    if (t->len + 1 >= MAXSIZE) {
         printf("这里已经满员了！");
         return;
     }
@@ -169,13 +169,15 @@ void OutPutID(sqlist * t) {
     int temp[t->len];
     for (int i = 0; i < t->len; i++)
         temp[i] = EasyAtoi(t->id[i]);
-    for (int i = 0; i < t->len - 1; i++)
-        for (int j = 0; j < t->len - 1; j++)
+    for (int i = 0; i < t->len - 1; i++) {
+        for (int j = 0; j < t->len - 1; j++) {
             if (temp[j] > temp[j+1]) {
                 int tmp = temp[j+1];
                 temp[j+1] = temp[j];
                 temp[j] = tmp;
             }
+        }
+    }
     for (int i = 0; i < t->len; i++) {
         for (int j = 0; j < t->len; j++) {
             if (temp[i] == EasyAtoi(t->id[j])) {
