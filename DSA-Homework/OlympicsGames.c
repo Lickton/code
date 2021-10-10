@@ -1,3 +1,9 @@
+/*
+ * FIle name:   OlympicsGames
+ * Author:      Lickton @github
+ * Date:        2021.10.8
+ * */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,7 +11,7 @@
 
 typedef struct Rank {
     int ** rank;
-    char country[MAXSIZE][MAXSIZE];
+    char ** country;
     int size;
     int length;
 } list;
@@ -57,6 +63,9 @@ void Init(list * t) {
     t->rank = (int **)malloc(sizeof(int *)*MAXSIZE);
     for (int i = 0; i < MAXSIZE; i++)
         t->rank[i] = (int *)malloc(sizeof(int)*4);
+    t->country = (char **)malloc(sizeof(char *)*MAXSIZE);
+    for (int i = 0; i < MAXSIZE; i++)
+        t->country[i] = (char *)malloc(sizeof(char)*MAXSIZE);
     count = t->length = MAXSIZE - 5;
     FILE * fp;
     fp = fopen("winners.txt", "r");
