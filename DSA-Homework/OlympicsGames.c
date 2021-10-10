@@ -1,5 +1,5 @@
 /*
- * FIle name:   OlympicsGames
+ * File name:   OlympicsGames
  * Author:      Lickton @github
  * Date:        2021.10.8
  * */
@@ -26,7 +26,7 @@ void Insert(list * t);
 void swap(int * m, int * n);
 
 int main() {
-    list * t;
+    list * t = (list *)malloc(sizeof(list));
     Init(t);
     int choice;
     while (1) {
