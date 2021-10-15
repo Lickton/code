@@ -1,32 +1,31 @@
 #include <stdio.h>
 #include <string.h>
-#define MAXSIZE 1000005
+#define MAXSIZE 1000010
+char text[MAXSIZE], pattern[MAXSIZE];
+int next[MAXSIZE];
 
-void BuildNext(char * pattern, int lenP, int * next) {
+void BuildNext(char * pattern, int lenP) {
     int i = 1, j = 0;
     while (i < lenP) {
         if (pattern[i] == pattern[j])
-            next[i++] = next[i-1] + 1;
+            next[i++] = ++j;
         else if (j != 0)
             j = next[j-1];
         else
-            next[i++] = 0;
+            next[++i] = 0;
     }
 }
 
-int main() {
-    char text[MAXSIZE], pattern[MAXSIZE];
+int main() { 
     scanf("%s%s", text, pattern);
     int lenT = strlen(text), lenP = strlen(pattern);
-    int next[lenP], i = 0, j = 0;
-    if (lenP > lenT)
-        return 0;
-    BuildNext(pattern, lenP, next);
+    int i = 0, j = 0;
+    BuildNext(pattern, lenP);
     while (i < lenT) {
         if (text[i] == pattern[j]) {
             i++;
             j++;
-        } else if (text[i] != pattern[j] && j != 0)
+        } else if (j != 0)
             j = next[j-1];
         else
             i++;
