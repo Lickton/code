@@ -4,7 +4,7 @@
 char text[MAXSIZE], pattern[MAXSIZE];
 int next[MAXSIZE];
 
-void BuildNext(char * pattern, int lenP) {
+void BuildNext(int lenP) {
     int i = 1, j = 0;
     while (i < lenP) {
         if (pattern[i] == pattern[j])
@@ -12,15 +12,15 @@ void BuildNext(char * pattern, int lenP) {
         else if (j != 0)
             j = next[j-1];
         else
-            next[++i] = 0;
+            next[i++] = 0;
     }
 }
 
 int main() { 
     scanf("%s%s", text, pattern);
-    int lenT = strlen(text), lenP = strlen(pattern);
+    int lenT = (int)strlen(text), lenP = (int)strlen(pattern);
     int i = 0, j = 0;
-    BuildNext(pattern, lenP);
+    BuildNext(lenP);
     while (i < lenT) {
         if (text[i] == pattern[j]) {
             i++;
@@ -34,7 +34,7 @@ int main() {
             j = next[j-1];
         }
     }
-    for (int i = 0; i < lenP; i++)
+    for (i = 0; i < lenP; i++)
         printf("%d ", next[i]);
     return 0;
 }
