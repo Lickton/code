@@ -6,17 +6,9 @@
 
 // @lc code=start
 /*
-执行用时：
-0 ms
-, 在所有 C 提交中击败了
-100.00%
-的用户
-内存消耗：
-6.2 MB
-, 在所有 C 提交中击败了
-28.62%
-的用户
-通过测试用例：
+    80/80 cases passed (0 ms)
+    Your runtime beats 100 % of c submissions
+    Your memory usage beats 44.1 % of c submissions (6.1 MB)
 */
 void BuildNext(char * neddle, int lenN, int * next) {
     int i = 1, j = 0, temp;
