@@ -1,0 +1,16 @@
+a M
+b M
+c F
+e M
+f F
+g M
+h M
+i F
+j M
+k M
+l F
+m M
+n F
+o M
+p M
+q F

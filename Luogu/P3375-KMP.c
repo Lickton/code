@@ -20,6 +20,7 @@ int main() {
     scanf("%s%s", text, pattern);
     int lenT = (int)strlen(text), lenP = (int)strlen(pattern);
     int i = 0, j = 0;
+    memset(next, 0, strlen(pattern));
     BuildNext(lenP);
     while (i < lenT) {
         if (text[i] == pattern[j]) {
