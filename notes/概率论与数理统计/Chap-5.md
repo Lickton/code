@@ -54,6 +54,7 @@ EX_i=p(1-p),\ DX_i=p(1-p),\\ m_n=\sum_{i=1}^{n}x_i,\ \frac{m_n}{n}=\frac{1}{n}\s
 $$
 \lim_{n\to\infin}{P\{\vert\frac{1}{n}\sum_{i=1}^{n}x_i-\frac{1}{n}\sum_{i=1}^{n}EX_i\vert<\epsilon\}=1}\tag{3}
 $$
+
 > 切比雪夫大数定律:
 $x_1...x_n不相关的变量$,$EX_i$和$DX_i$都存在，方差有界，$DX_i\leq M,\forall\epsilon>0$
 $$
@@ -79,3 +80,48 @@ $$
 依然成立
 
 # 5.2 中心极限定理
+现象由大量相互独立的因素影响
+大量独立同分布的变量和的极限分布是正态分布.
+
+>独立同分布下的中心极限定理:
+$x_1...x_2$独立同分布.$EX_i=\mu,DX_i=\sigma^2,0<\sigma^2<+\infin$
+$$
+\lim_{n\to\infin}P(\frac{\sum_{i=1}^{n}x_i-n\mu}{\sqrt{n}\sigma}\leq x)=\Phi_o(x)\\Y=\sum_{i=1}^{n}x_i, \ EY=E\sum_{i=1}^{n}x_i=n\mu\\DY=D(\sum_{i=1}^{n}x_i)=n\sigma^2
+$$
+$\frac{\sum x_i-n\mu}{\sqrt{n}\sigma}$可以视作$N(0,1)$
+
+*Example*:
+射击环数概率分布如下，求射击100次环数在$915\sim 945$的概率.
+x | 10 | 9 | 8
+--|----|---|--
+P | 0.5|0.3|0.2
+*Solution*:
+$EX=10\times0.5+9\times0.3+8\times0.2=9.3$
+$EX^2=100\times0.5+81\times0.3+64\times0.2=0.61$
+$DX=EX^2-(EX)^2$
+记$x_i$为第$i$次环数，$Y=\frac{\sum x_i-930}{\sqrt{61}}\sim N(0,1)$
+$\therefore P(915\leq \sum x_i\leq945)=P(\frac{915-930}{\sqrt{61}}\leq Y \leq\frac{945-930}{\sqrt{61}})$
+$=P(-1.92\leq Y\leq1.92)$
+$=\Phi_o(1.92)-\Phi_o(-1.92)$
+$=\Phi_o(1.92)-(1-\Phi_o(1.92))$
+$=2\Phi_o(1.92)-1$
+
+>二项分布的正态近似:
+$Y_n$满足参数为$n,p$的二项分布，有
+$$
+\lim_{n\to\infin}P(\frac{Y_n-np}{\sqrt{np(1-p)}}\leq x)=\Phi_o(x)   \tag{6}
+$$
+$Y_n=\sum_{i=1}{n}x_i$，$EX_i=p$，$DX_i=p(1-p)$
+
+*Example*:
+死亡概率$0.005$,求死亡人数$\leq 70$的概率.
+
+*Solution*:
+记$x$为死亡人数
+$$
+P(x\leq70)=P(\frac{x-np}{\sqrt{np(1-p)}}\leq\frac{70-np}{\sqrt{np(1-p)}})\\=\Phi_o(2.84)=0.9977
+$$
+
+>二项分布的近似:
+    1. 泊松分布 $n$ 大,$np$适中时$(\leq 10)$
+    2. 正态分布 $n$ 大,$np$较大时适用
