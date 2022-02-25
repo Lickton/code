@@ -1,2 +1,0 @@
-lickton@lickton-Jiaolong ~/桌/c/DSA-Homework (master)> gcc 3-KMP.c && ./a.out
-马林鱼一共出现了7次
