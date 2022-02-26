@@ -4,8 +4,7 @@ using namespace std;
 
 const int N = 1e6 + 10;
 
-int n;
-int q[N];
+int n, q[N];
 
 void quick_sort(int q[], int l, int r) {
     if (l >= r)
