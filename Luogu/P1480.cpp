@@ -4,7 +4,7 @@
 
 using namespace std;
 
-vector<int> div(vector<int> &a, int b, int &r) {
+vector<int> div(vector<int> &a, long b, long &r) {
     vector<int> c;
     for (int i = a.size() - 1; i >= 0; i--) {
         r = r * 10 + a[i];
@@ -20,7 +20,7 @@ vector<int> div(vector<int> &a, int b, int &r) {
 
 int main() {
     string a;
-    int b, r = 0;
+    long b, r = 0;
     vector<int> x;
     cin >> a >> b; 
     for (int i = a.size() - 1; i >= 0; i--)
@@ -29,7 +29,6 @@ int main() {
     auto c = div(x, b ,r);
     for (int i = c.size() - 1; i >= 0 ; i--)
         printf("%d", c[i]);
-    cout << endl << r << endl;
 
     return 0;
 }
