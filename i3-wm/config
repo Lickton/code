@@ -45,7 +45,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -57,7 +57,7 @@ set $inactive-text-color    #676E7D
 set $urgent-bg-color        #E53935
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show combi -lines 2 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "DejaVu Math Tex Gyre 18"
+bindsym $mod+d exec rofi -show drun -theme nord-light
 # A more modern dmenu replacement is rofi:
 
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -117,16 +117,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1. FireFox "
+set $ws1 "1. Chrome "
 set $ws2 "2. Terminal "
-set $ws3 "3. Steam "
+set $ws3 "3. Books "
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10. Spotify 阮"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -152,8 +152,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-assign [class="firefox"] $ws1
-assign [class="Steam"] $ws3
+assign [class="Google-chrome"] $ws1
+assign [class="calibre"] $ws3
+# Sepcial for Spotify
+for_window [class="Spotify"] move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -210,32 +212,22 @@ bindsym $mod+r mode "resize"
 bar {
     font pango: FiraCode Nerd Font Mono, Font Awesome 6 Free
     position top
-    status_command i3status
-    colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-    }
+    status_command i3blocks -c ~/.i3/i3blocks.config
 }
 
 # lock the screen
 bindsym $mod+shift+x exec i3lock
-bindsym $mod+shift+a exec --no-startup-id flameshot gui
+bindsym $mod+Control+a exec flameshot gui
+bindsym $mod+x [urgent=latest] focus 
+
 # start when login
 #exec /opt/apps/com.qq.im.deepin/files/run.sh
 # wallpaper
-exec_always feh --bg-scale /home/lickton/Pictures/'Macos_Catalina_2019_Mountains_Landscape Wallpaper_3840x2400[10wallpaper.com]'.jpg
-exec firefox
+exec_always feh --bg-scale /home/lickton/Pictures/'nordic-obsession-light.png'
 exec --no-startup-id fcitx5 -d
-exec --no-startup-id ~/.config/polybar/lanuch.sh
+exec --no-startup-id spotify
+exec --no-startup-id calibre
 # exec --no-startup-id ~/i3wm-config/screenlayout.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
-exec --no-startup-id steam
 exec --no-startup-id flameshot
-# https://www.todebug.com/use-external-display-on-i3wm/ 显示屏显示
-# exec --no-startup-id /opt/apps/com.qq.im.deepin/files/run.sh
