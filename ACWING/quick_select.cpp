@@ -7,9 +7,9 @@ const int N = 1e5 + 10;
 int q[N], n, k;
 
 int quick_select(int q[], int l, int r, int k) {
-    if ( l == r)
+    if (l == r)
         return q[l];
-    int i = l - 1, j = r + 1, x = q[ l + r >> 1];
+    int i = l - 1, j = r + 1, x = q[l + r >> 1];
     while (i < j) {
         do i++; while(q[i] < x);
         do j--; while(q[j] > x);
