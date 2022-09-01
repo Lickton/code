@@ -219,15 +219,27 @@ bar {
 bindsym $mod+shift+x exec i3lock
 bindsym $mod+Control+a exec flameshot gui
 bindsym $mod+x [urgent=latest] focus 
+bindsym $mod+m exec --no-startup-id ~/i3wm-config/mount.sh
+
+# round conner 
+border_radius 5
+
+gaps inner 8 
+gaps outer 6
+
+# no title-bar
+default_border pixel 0
+default_floating_border pixel 5
 
 # start when login
 #exec /opt/apps/com.qq.im.deepin/files/run.sh
 # wallpaper
-exec_always feh --bg-scale /home/lickton/Pictures/'nordic-obsession-light.png'
-exec --no-startup-id fcitx5 -d
-exec --no-startup-id spotify
+exec_always --no-startup-id feh --bg-scale /home/lickton/Pictures/'wallhaven-k7vm66.jpg'
 exec --no-startup-id calibre
-# exec --no-startup-id ~/i3wm-config/screenlayout.sh
-exec --no-startup-id nm-applet
-exec --no-startup-id picom
+exec --no-startup-id fcitx5 -d
+exec --no-startup-id optimus-manager
 exec --no-startup-id flameshot
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec_always --no-startup-id picom
+exec --no-startup-id spotify
