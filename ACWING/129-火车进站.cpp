@@ -39,6 +39,7 @@ void dfs()
 
 int main()
 {
+  cout << "Hello World" << endl;
     cin >> n;
     dfs();
     return 0;

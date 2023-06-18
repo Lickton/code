@@ -1,0 +1,17 @@
+{
+  "configurations": {
+    "Launch": {
+      "adapter": "vscode-cpptools",
+      "filetypes": ["cpp", "c", "objc", "rust"],
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceFolder}/a.out",
+        "cwd": "${workspaceFolder}",
+        "args": [ ],
+        "environment": [ ],
+        "externalConsole": true,
+        "MIMode": "gdb"
+      }
+    }
+  }
+}
